@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using FakeBank.Api.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
+// using Microsoft.Extensions.Logging;
 
 namespace FakeBank.Api.Controllers
 {

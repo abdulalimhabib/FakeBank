@@ -8,7 +8,7 @@ export class Home extends Component {
     return (
       <div>
         <h3>Welcome to Fake Bank</h3>
-        <LoginView />
+        <LoginView UserName="Abdul" />
       </div>
     );
   }
