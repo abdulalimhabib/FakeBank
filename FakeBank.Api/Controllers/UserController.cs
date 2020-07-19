@@ -100,6 +100,24 @@ namespace FakeBank.Api.Controllers
             return user;
         }
 
+        [HttpGet("GetUserAccounts")]
+        public async Task<IEnumerable<UserAccounts>> GetUserAccounts(int id)
+        {
+            return await _context.UserAccounts.Where(u => u.UserId == id).ToListAsync();
+        }
+
+        [HttpPost("CreateUserAccount")]
+        public async Task<IActionResult> CreateUserAccount(UserAccounts userAccount)
+        {
+            userAccount.CreatedOn = DateTimeOffset.Now;
+            userAccount.LastModifiedOn = DateTimeOffset.Now;
+
+            await _context.UserAccounts.AddAsync(userAccount);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetUserAccounts", new { id = userAccount.Id }, userAccount);
+        }
+
         #endregion
 
         #region " Private Functions "
